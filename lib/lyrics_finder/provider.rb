@@ -1,7 +1,7 @@
 module LyricsFinder
   module Provider
     def self.list
-      [LyricsWikia, LyricsMania, SongLyrics, Azlyrics]
+      [LyricsWikia, SongLyrics]
     end
 
     def self.url_for_song(provider, song)
@@ -29,28 +29,12 @@ module LyricsFinder
       def css_element; ".lyricbox"; end
     end
 
-    LyricsMania = Struct.new(:song) do
-      def format_url
-        song.format_attributes_with_separator!("_")
-        "http://www.lyricsmania.com/#{song.title}_lyrics_#{song.author}.html"
-      end
-      def css_element; ".lyrics-body"; end
-    end
-
     SongLyrics = Struct.new(:song) do
       def format_url
         song.format_attributes_with_separator!("-")
         "http://www.songlyrics.com/#{song.author}/#{song.title}-lyrics/"
       end
       def css_element; "#songLyricsDiv"; end
-    end
-
-    Azlyrics = Struct.new(:song) do
-      def format_url
-        song.format_attributes_with_separator!("")
-        "http://www.azlyrics.com/lyrics/#{song.author}/#{song.title}.html"
-      end
-      def css_element; "div:nth-child(7)"; end
     end
   end
  end
