@@ -1,6 +1,5 @@
 describe LyricsFinder do
   describe '#search' do
-
     context 'With LyricsWikia as the provider' do
       before :each do
         allow(LyricsFinder::Provider).to receive(:list).and_return([LyricsFinder::Provider::LyricsWikia])
@@ -36,28 +35,19 @@ describe LyricsFinder do
     end
 
     context 'with a song that does not exist yet in any provider' do
-      # it 'raises HTTP Error' do
-      #   expect{
-      #     LyricsFinder.search('asdfqwerty', 'poiulkj')
-      #   }.to raise_error(OpenURI::HTTPError)
-      # end
-
-      it 'returns nil' do
-        expect(LyricsFinder.search('', '')).to eq nil
+      it 'raises HTTP Error' do
+        expect{
+          LyricsFinder.search('asdfqwerty', 'poiulkj')
+        }.to raise_error(OpenURI::HTTPError)
       end
     end
 
     context 'with invalid parameters' do
-      # it 'raises HTTP Error' do
-      #   expect{
-      #     LyricsFinder.search('', '')
-      #   }.to raise_error(OpenURI::HTTPError)
-      # end
-
-      it 'returns nil' do
-        expect(LyricsFinder.search('', '')).to eq nil
+      it 'raises HTTP Error' do
+        expect{
+          LyricsFinder.search('', '')
+        }.to raise_error(OpenURI::HTTPError)
       end
     end
-
   end
 end

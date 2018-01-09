@@ -7,20 +7,12 @@ require_relative 'lyrics_finder/song'
 require_relative 'lyrics_finder/provider'
 
 module LyricsFinder
-
   def self.search(author, title)
-    begin
-      Provider.list.each do |provider|
-        url = Provider.url_for_song(provider, Song.new(author, title))
-        data = open(url)
-        result = Provider.extract_lyric_from_data(data) unless data.nil?
-        return result unless result.nil?
-      end
-    rescue SocketError => ex
-      puts "LyricsFinder can't connect to the internet"
-    rescue OpenURI::HTTPError => ex
-      puts "LyricsFinder can't find any matching lyrics for that song"
+    Provider.list.each do |provider|
+      url = Provider.url_for_song(provider, Song.new(author, title))
+      data = open(url)
+      result = Provider.extract_lyric_from_data(data) unless data.nil?
+      return result unless result.nil?
     end
   end
-
 end
