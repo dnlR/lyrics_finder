@@ -3,9 +3,9 @@ cache: bundler
 
 rvm:
   - ruby
-  - 2.1.0
+  - 2.5.0
 
 notifications:
   email:
     recipients:
-      - dromveg@gmail.com
+      - hi@danielromero.com
