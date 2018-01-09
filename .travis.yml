@@ -7,5 +7,4 @@ rvm:
 
 notifications:
   email:
-    recipients:
-      - hi@danielromero.com
+    on_failure: never
