@@ -10,9 +10,9 @@ module LyricsFinder
       begin
         puts LyricsFinder.search(options[:author], options[:title])
       rescue SocketError => ex
-        puts "LyricsFinder can't connect to the internet"
+        puts "lyrics_finder can't connect to the internet"
       rescue OpenURI::HTTPError => ex
-        puts "LyricsFinder can't find any matching lyrics for that song"
+        puts "lyrics_finder can't find any matching lyrics for that song"
       end
     end
   end
